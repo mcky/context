@@ -6,9 +6,10 @@
     "bem-classnames": "^1.0.7",
     "hat": "0.0.3",
     "lodash": "^3.10.1",
-    "react": "^0.13.3",
-    "react-redux": "^3.0.0",
-    "redux": "^3.0.0"
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.3",

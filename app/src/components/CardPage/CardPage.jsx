@@ -12,14 +12,14 @@ import {Card} from './Card'
 export default class CardPage extends Component {
 
 	render() {
-		const {fields: {fieldsById: fields}, dispatch} = this.props
+		const {fields: {fields, fieldsById}, dispatch} = this.props
 		const actions = bindActionCreators(FieldActions, dispatch)
 
 		return (
 			<div>
-				<Card {...{fields, actions}} />
+				<Card {...{fields, fieldsById, actions}} />
 
-				<Editor {...{fields, actions}} />
+				<Editor {...{fields, fieldsById, actions}} />
 			</div>
 		)
 	}
