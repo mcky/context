@@ -1,0 +1,14 @@
+.card {
+	background: white;
+	padding: .5rem 0;
+
+	&__content {
+		padding: 0 1rem;
+		margin-bottom: .3rem;
+
+		&--list {
+			ul { @extend %default-ul; }
+			ol { @extend %default-ol; }
+		}
+	}
+}

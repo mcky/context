@@ -1,0 +1,32 @@
+{
+    "rules": {
+        "indent": [ 1, "tab", {"SwitchCase": 1} ],
+        "quotes": [ 1, "single" ],
+        "linebreak-style": [ 1, "unix" ],
+        "semi": [ 1, "never" ],
+        "comma-dangle": [ 1, "always-multiline"],
+        "no-unused-vars": 1,
+        "react/jsx-uses-react": 1,
+        "react/prop-types": 1,
+        "react/jsx-sort-prop-types": 1,
+        "react/sort-comp": 1,
+        "react/jsx-curly-spacing": 2,
+        "react/jsx-closing-bracket-location": 2
+    },
+    "parser": "babel-eslint",
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true
+    },
+    "extends": "eslint:recommended",
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true,
+        "classes": true,
+        "experimentalObjectRestSpread": true
+    },
+    "plugins": [
+        "react"
+    ]
+}

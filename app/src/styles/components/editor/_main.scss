@@ -1,0 +1,16 @@
+.editor {
+	&__field,
+	&__new {
+		margin-bottom: 1rem;
+		padding: .5rem;
+		background: white;
+	}
+
+	&__field {
+		&__delete {
+			@extend .button;
+			@extend .button--unstyled;
+			float: right;
+		}
+	}
+}
