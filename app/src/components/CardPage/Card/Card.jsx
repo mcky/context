@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import mapValues from 'lodash/object/mapValues'
 import Field from './Field.jsx'
 
 export default class Card extends Component {

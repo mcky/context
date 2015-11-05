@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react'
-import mapValues from 'lodash/object/mapValues'
 import Field from './Field.jsx'
 import NewField from './NewField.jsx'
 
