@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import cx from 'bem-classnames'
-import {Text, List}from './Fields'
+import {Text, List, Separator} from './Fields'
 
 export default class Field extends Component {
 
@@ -11,6 +11,8 @@ export default class Field extends Component {
 				return <Text {...{content, meta}}  />
 			case 'list':
 				return <List {...{content, meta}}/>
+			case 'separator':
+				return <Separator {...{content, meta}}/>
 			default:
 				return <div />
 		}

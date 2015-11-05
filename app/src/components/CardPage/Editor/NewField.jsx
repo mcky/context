@@ -10,6 +10,7 @@ const fieldSchema = {
 			variation: 'ul',
 		},
 	},
+	'separator': {},
 }
 
 export default class NewField extends Component {
