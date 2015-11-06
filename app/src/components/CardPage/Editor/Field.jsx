@@ -1,4 +1,6 @@
 import React, {Component, PropTypes} from 'react'
+import { findDOMNode } from 'react-dom'
+import { DragSource, DropTarget } from 'react-dnd'
 import cx from 'bem-classnames'
 import {Text, List} from './Fields'
 

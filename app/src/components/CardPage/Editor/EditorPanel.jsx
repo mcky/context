@@ -1,4 +1,6 @@
 import React, {Component, PropTypes} from 'react'
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import Field from './Field.jsx'
 import NewField from './NewField.jsx'
 
