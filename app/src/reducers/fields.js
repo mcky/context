@@ -32,6 +32,13 @@ const initialState = {
 
 const generateId = () => Math.random().toString(36).substr(2, 5)
 
+const reorderArray = (arr, fromIndex, toIndex) => {
+	const element = arr[fromIndex]
+	arr.splice(fromIndex, 1)
+	arr.splice(toIndex, 0, element)
+	return arr
+}
+
 const actions = {
 	ADD_FIELD: function(state, {body}) {
 		const newId = generateId(state)
@@ -53,6 +60,15 @@ const actions = {
 			...state,
 			fields: state.fields.filter(id => id !== fieldId),
 			fieldsById: omit(state.fieldsById, fieldId),
+		}
+	},
+
+	REORDER_FIELD: function(state, {dragIndex, hoverIndex}) {
+		const fields = reorderArray(state.fields, dragIndex, hoverIndex)
+
+		return {
+			...state,
+			fields,
 		}
 	},
 

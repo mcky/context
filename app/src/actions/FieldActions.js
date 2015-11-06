@@ -10,6 +10,12 @@ export const deleteField = (id) => ({
 	id,
 })
 
+export const reorderField = (dragIndex, hoverIndex) => ({
+	type: types.REORDER_FIELD,
+	dragIndex,
+	hoverIndex,
+})
+
 export const changeFieldContent = (id, content) => ({
 	type: types.CHANGE_FIELD,
 	id,
