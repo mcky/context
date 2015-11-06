@@ -7,10 +7,25 @@
 	}
 
 	&__field {
-		&__delete {
+		&__delete,
+		&__move {
 			@extend .button;
 			@extend .button--unstyled;
 			float: right;
+			margin-right: .3rem;
+		}
+
+		&__move {
+			cursor: move;
+		}
+
+		&--isDragging {
+			border: .1rem dashed rgba(#444, .3);
+			background: transparent;
+
+			> * {
+				visibility: hidden;
+			}
 		}
 	}
 }
