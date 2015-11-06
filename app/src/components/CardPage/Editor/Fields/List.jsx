@@ -36,15 +36,12 @@ export default class List extends Component {
 		return (
 			<div>
 				<select value={currentType.value} onChange={this.changeType}>
-					{types.map((type) => {
-						return <option value={type.value}>{type.text}</option>
-					})}
+					{types.map(({value, text}, key) => <option {...{key, value}}>{text}</option>)}
 				</select>
 
-				{content.map((item, index) => {
-					return (
-						<input type="text" value={item} onChange={this.changeContent.bind(null, index)} />
-					)
+				{content.map((value, index) => {
+					const onChange = this.changeContent.bind(null, index)
+					return <input type="text" {...{onChange, value}} key={index} />
 				})}
 
 				<button onClick={this.newField}>New</button>

@@ -17,9 +17,7 @@ export default class List extends Component {
 		const {content: list, meta: {variation}} = this.props
 		return (
 			<ListType {...{variation}}>
-				{list.map(item => (
-					<li>{item}</li>
-				))}
+				{list.map((item, key) => <li {...{key}} >{item}</li>)}
 			</ListType>
 		)
 	}
