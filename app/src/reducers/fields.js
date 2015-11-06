@@ -3,30 +3,34 @@ import assign from 'lodash/object/assign'
 import mapValues from 'lodash/object/mapValues'
 
 const initialState = {
-	fields: [1, 2],
+	fields: ['one', 'two', 'four', 'three'],
 	fieldsById: {
-		1: {
-			id: 1,
+		'one': {
+			id: 'one',
 			type: 'text',
 			content: 'sample text',
 		},
-		2: {
-			id: 2,
+		'two': {
+			id: 'two',
 			type: 'list',
 			content: ['one', 'two'],
 			meta: {
 				'variation': 'ol',
 			},
 		},
+		'three': {
+			id: 'three',
+			type: 'separator',
+		},
+		'four': {
+			id: 'four',
+			type: 'text',
+			content: 'last text',
+		},
 	},
 }
 
-const generateId = function(state) {
-	const fields = state.fields
-		, fieldLen = fields.length
-	return fieldLen > 0
-		? fields[fieldLen-1] + 1 : 1
-}
+const generateId = () => Math.random().toString(36).substr(2, 5)
 
 const actions = {
 	ADD_FIELD: function(state, {body}) {
