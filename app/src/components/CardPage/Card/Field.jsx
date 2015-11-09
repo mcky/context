@@ -1,21 +1,14 @@
 import React, {Component} from 'react'
 import cx from 'bem-classnames'
-import {Text, List, Separator} from './Fields'
+import capitalize from 'lodash/string/capitalize'
+import * as FieldTypes from './Fields'
 
 export default class Field extends Component {
 
 	getField(type) {
 		const {content, meta} = this.props
-		switch(type) {
-			case 'text':
-				return <Text {...{content, meta}}  />
-			case 'list':
-				return <List {...{content, meta}}/>
-			case 'separator':
-				return <Separator {...{content, meta}}/>
-			default:
-				return <div />
-		}
+		const FieldType = FieldTypes[capitalize(type)]
+		return FieldType ? <FieldType {...{content, meta}}/> : <div />
 	}
 
 	render () {

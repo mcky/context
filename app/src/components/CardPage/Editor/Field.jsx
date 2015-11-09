@@ -2,7 +2,8 @@ import React, {Component, PropTypes} from 'react'
 import { findDOMNode } from 'react-dom'
 import { DragSource, DropTarget } from 'react-dnd'
 import cx from 'bem-classnames'
-import {Text, List} from './Fields'
+import capitalize from 'lodash/string/capitalize'
+import * as FieldTypes from './Fields'
 
 const cardSource = {
 	beginDrag: ({id, index}) => ({id, index}),
@@ -53,12 +54,8 @@ export default class Field extends Component {
 			onContentChange: this.handleContentChange,
 			onMetaChange: this.handleMetaChange,
 		}
-		switch(type) {
-			case 'text':
-				return <Text {...baseProps}/>
-			case 'list':
-				return <List {...baseProps}/>
-		}
+		const FieldType = FieldTypes[capitalize(type)]
+		return FieldType ? <FieldType {...baseProps}/> : null
 	}
 
 	render() {
