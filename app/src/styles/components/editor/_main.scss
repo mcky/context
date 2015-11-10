@@ -11,12 +11,27 @@
 		&__move {
 			@extend .button;
 			@extend .button--unstyled;
+		}
+
+		&__info {
+			margin-bottom: .5rem;
+
+			> * {
+				display: inline;
+			}
+		}
+
+		&__type {
+			margin-right: 1rem;
+		}
+
+		&__actions {
 			float: right;
-			margin-right: .3rem;
 		}
 
 		&__move {
 			cursor: move;
+			margin-right: 1rem;
 		}
 
 		&--isDragging {

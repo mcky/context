@@ -78,18 +78,22 @@ export default class Field extends Component {
 		return connectDragPreview(connectDropTarget(
 			<li {...{className}}>
 
-				<div>
-					{type}
+				<div className="editor__field__info">
+
+					<span className="editor__field__type">{type}</span>
 
 					{this.getFieldOptions(type)}
 
-					<button className={`editor__field__delete`} onClick={() => deleteField(id)}>
-						x
-					</button>
+					<div className="editor__field__actions">
+						{connectDragSource(
+							<span className={`editor__field__move`}>MOVE</span>
+						)}
 
-					{connectDragSource(
-						<span className={`editor__field__move`}>MOVE</span>
-					)}
+						<button className={`editor__field__delete`} onClick={() => deleteField(id)}>
+							x
+						</button>
+					</div>
+
 				</div>
 
 				{this.getField(type)}
