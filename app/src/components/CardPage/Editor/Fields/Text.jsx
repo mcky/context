@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-export default class Field extends Component {
+export default class Text extends Component {
 
 	render() {
 		const {onContentChange: handleChange, content: value} = this.props
