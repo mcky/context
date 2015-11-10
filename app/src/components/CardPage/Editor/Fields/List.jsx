@@ -1,13 +1,31 @@
 import React, {Component} from 'react'
 
-// TODO: Abstract to array field type
-export default class List extends Component {
+export class ListMeta extends Component {
 
 	changeType = (evt) => {
 		this.props.onMetaChange({
 			variation: evt.target.value,
 		})
 	}
+
+	render() {
+		const {meta} = this.props
+		const types = [
+			{text: 'Unordered', value: 'ul'},
+			{text: 'Ordered', value: 'ol'},
+		]
+		const currentType = types.filter(t => t.value === meta.variation)[0]
+
+		return (
+			<select value={currentType.value} onChange={this.changeType}>
+				{types.map(({value, text}, key) => <option {...{key, value}}>{text}</option>)}
+			</select>
+		)
+	}
+}
+
+
+export default class List extends Component {
 
 	changeContent = (index, evt) => {
 		let {content, onContentChange} = this.props
@@ -24,21 +42,10 @@ export default class List extends Component {
 	}
 
 	render() {
-		const {onChange: handleChange, content, meta} = this.props
-
-		const types = [
-			{text: 'Unordered', value: 'ul'},
-			{text: 'Ordered', value: 'ol'},
-		]
-
-		const currentType = types.filter(t => t.value === meta.variation)[0]
+		const {content, meta} = this.props
 
 		return (
 			<div>
-				<select value={currentType.value} onChange={this.changeType}>
-					{types.map(({value, text}, key) => <option {...{key, value}}>{text}</option>)}
-				</select>
-
 				{content.map((value, index) => {
 					const onChange = this.changeContent.bind(null, index)
 					return <input type="text" {...{onChange, value}} key={index} />

@@ -1,2 +1,11 @@
-export {default as Text} from './Text.jsx'
-export {default as List} from './List.jsx'
+import Text from './Text.jsx'
+import List, {ListMeta} from './List.jsx'
+
+export const FieldMeta = {
+	List: ListMeta,
+}
+
+export default {
+	Text,
+	List,
+}

@@ -3,7 +3,7 @@ import { findDOMNode } from 'react-dom'
 import { DragSource, DropTarget } from 'react-dnd'
 import cx from 'bem-classnames'
 import capitalize from 'lodash/string/capitalize'
-import * as FieldTypes from './Fields'
+import FieldTypes, {FieldMeta} from './Fields'
 
 const cardSource = {
 	beginDrag: ({id, index}) => ({id, index}),
@@ -48,15 +48,18 @@ export default class Field extends Component {
 		changeFieldMeta(id, meta)
 	}
 
-	getField(type) {
+	GetComponentWithProps(type, components) {
 		const baseProps = {
 			...this.props,
 			onContentChange: this.handleContentChange,
 			onMetaChange: this.handleMetaChange,
 		}
-		const FieldType = FieldTypes[capitalize(type)]
-		return FieldType ? <FieldType {...baseProps}/> : null
+		const ReturnedComponent = components[capitalize(type)]
+		return ReturnedComponent ? <ReturnedComponent {...baseProps} /> : null
 	}
+
+	getField = (type) => this.GetComponentWithProps(type, FieldTypes)
+	getFieldOptions = (type) => this.GetComponentWithProps(type, FieldMeta)
 
 	render() {
 		const { id, type, deleteField,
@@ -77,6 +80,8 @@ export default class Field extends Component {
 
 				<div>
 					{type}
+
+					{this.getFieldOptions(type)}
 
 					<button className={`editor__field__delete`} onClick={() => deleteField(id)}>
 						x
