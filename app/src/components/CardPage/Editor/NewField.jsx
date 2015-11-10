@@ -1,17 +1,5 @@
 import React, {Component} from 'react'
-
-const fieldSchema = {
-	'text': {
-		content: '',
-	},
-	'list': {
-		content: [''],
-		meta: {
-			variation: 'ul',
-		},
-	},
-	'separator': {},
-}
+import {FieldSchema} from './Fields'
 
 export default class NewField extends Component {
 
@@ -28,7 +16,7 @@ export default class NewField extends Component {
 		const {state: {type}, props: {addField}} = this
 		addField({
 			type,
-			...fieldSchema[type],
+			...FieldSchema[type],
 		})
 	}
 
@@ -38,7 +26,7 @@ export default class NewField extends Component {
 		return (
 			<div className="editor__new">
 				<select value={currentType} onChange={this.handleChange}>
-					{Object.keys(fieldSchema).map((type, index) => {
+					{Object.keys(FieldSchema).map((type, index) => {
 						return <option value={type} key={index}>{type}</option>
 					})}
 				</select>

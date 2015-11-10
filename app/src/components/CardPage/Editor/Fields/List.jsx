@@ -1,5 +1,12 @@
 import React, {Component} from 'react'
 
+export const ListSchema = {
+	content: [''],
+	meta: {
+		variation: 'ul',
+	},
+}
+
 export class ListMeta extends Component {
 
 	changeType = (evt) => {

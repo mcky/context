@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 
+export const TextSchema = {
+	content: '',
+}
+
 export default class Text extends Component {
 
 	render() {
