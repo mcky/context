@@ -40,6 +40,11 @@ export default class List extends Component {
 		onContentChange(content)
 	}
 
+	componentDidUpdate = ({content: oldContent}) => {
+		const {content} = this.props
+		if (content.length > oldContent.length) this.refs.last.focus()
+	}
+
 	newField = () => {
 		let {content, onContentChange} = this.props
 		onContentChange([
@@ -55,7 +60,8 @@ export default class List extends Component {
 			<div>
 				{content.map((value, index) => {
 					const onChange = this.changeContent.bind(null, index)
-					return <input type="text" {...{onChange, value}} key={index} />
+					const ref = content.length-1 === index ? 'last' : null
+					return <input type="text" {...{onChange, value, ref}} key={index} />
 				})}
 
 				<button onClick={this.newField}>New</button>
