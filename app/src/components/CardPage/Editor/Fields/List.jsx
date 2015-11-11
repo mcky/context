@@ -57,13 +57,13 @@ export default class List extends Component {
 		if (content.length > oldContent.length) this.refs.last.focusInput()
 	}
 
-	newFieldDisabled = () => {
+	newItemDisabled = () => {
 		const {content} = this.props
 		const lastItem = content[content.length-1]
 		return typeof(lastItem) !== 'undefined' && lastItem === ''
 	}
 
-	newField = () => {
+	newItem = () => {
 		let {content, onContentChange} = this.props
 		onContentChange([
 			...content,
@@ -73,7 +73,7 @@ export default class List extends Component {
 
 	render() {
 		const {content, meta} = this.props
-		const disabled = this.newFieldDisabled()
+		const disabled = this.newItemDisabled()
 
 		return (
 			<div>
@@ -83,7 +83,7 @@ export default class List extends Component {
 					return <ListItem {...{index, ref, value, changeContent}} key={index} />
 				})}
 
-				<button {...{disabled}} onClick={this.newField}>New</button>
+				<button {...{disabled}} onClick={this.newItem}>New</button>
 			</div>
 		)
 	}
