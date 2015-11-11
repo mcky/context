@@ -4,6 +4,7 @@ import List, {ListMeta, ListSchema} from './List.jsx'
 export const FieldSchema = {
 	List: ListSchema,
 	Text: TextSchema,
+	Heading: TextSchema,
 	Separator: {},
 }
 
@@ -13,5 +14,6 @@ export const FieldMeta = {
 
 export default {
 	Text,
+	Heading: Text,
 	List,
 }

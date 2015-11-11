@@ -8,11 +8,13 @@ export const TextSchema = {
 export default class Text extends Component {
 
 	render() {
-		const {onContentChange: handleChange, content: value} = this.props
+		const {onContentChange: handleChange, content: value, type} = this.props
 		const onChange = (evt) => handleChange(evt.target.value)
-		return (
-			<Textarea type="text" {...{value, onChange}} maxRows={4} />
-		)
+
+		return type === 'heading' ?
+			<input type="text" {...{value, onChange}} />
+		:
+			<Textarea maxRows={4} {...{value, onChange}}/>
 	}
 
 }
