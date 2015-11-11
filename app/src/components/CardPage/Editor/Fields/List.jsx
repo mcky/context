@@ -38,13 +38,14 @@ class ListItem extends Component {
 	}
 
 	render() {
-		const {index, changeContent, deleteItem, value} = this.props
+		const {index, changeContent, deleteItem, handleKeyUp, isLast, value} = this.props
 		const onChange = changeContent.bind(null, index)
+		const onKeyUp = handleKeyUp.bind(null, isLast)
 		const handleDelete = deleteItem.bind(null, index)
 
 		return (
 			<div className="editor__field--list__item">
-				<input className="editor__field--list__item__input" type="text" ref="input" {...{onChange, value}} />
+				<input className="editor__field--list__item__input" type="text" ref="input" {...{onChange, onKeyUp, value}} />
 				<button onClick={handleDelete}>x</button>
 			</div>
 		)
@@ -58,6 +59,10 @@ export default class List extends Component {
 		const contentCopy = content.slice()
 		contentCopy[index] = evt.target.value
 		onContentChange(contentCopy)
+	}
+
+	handleKeyUp = (isLast, {keyCode}) => {
+		if (isLast && keyCode === 13 && !this.newItemDisabled()) this.newItem()
 	}
 
 	componentDidUpdate = ({content: oldContent}) => {
@@ -93,9 +98,9 @@ export default class List extends Component {
 		return (
 			<div>
 				{content.map((value, index) => {
-					const ref = content.length-1 === index ? 'last' : null
-					const {changeContent, deleteItem} = this
-					return <ListItem {...{index, ref, value, changeContent, deleteItem}} key={index} />
+					const last = content.length-1 === index ? 'last' : null
+					const {changeContent, deleteItem, handleKeyUp} = this
+					return <ListItem {...{index, ref: last, value, isLast: !!last, changeContent, deleteItem, handleKeyUp}} key={index} />
 				})}
 
 				<button {...{disabled}} onClick={this.newItem}>New</button>
