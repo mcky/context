@@ -4,7 +4,7 @@ export default class Text extends Component {
 
 	render () {
 		const {content} = this.props
-		return <div>{content}</div>
+		return <p>{content}</p>
 	}
 
 }
