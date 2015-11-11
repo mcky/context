@@ -31,6 +31,18 @@ export class ListMeta extends Component {
 	}
 }
 
+class ListItem extends Component {
+
+	focusInput() {
+		this.refs.input.focus()
+	}
+
+	render() {
+		const {index, changeContent, value} = this.props
+		const onChange = changeContent.bind(null, index)
+		return <input type="text" ref="input" {...{onChange, value}} />
+	}
+}
 
 export default class List extends Component {
 
@@ -42,7 +54,7 @@ export default class List extends Component {
 
 	componentDidUpdate = ({content: oldContent}) => {
 		const {content} = this.props
-		if (content.length > oldContent.length) this.refs.last.focus()
+		if (content.length > oldContent.length) this.refs.last.focusInput()
 	}
 
 	newFieldDisabled = () => {
@@ -66,9 +78,9 @@ export default class List extends Component {
 		return (
 			<div>
 				{content.map((value, index) => {
-					const onChange = this.changeContent.bind(null, index)
 					const ref = content.length-1 === index ? 'last' : null
-					return <input type="text" {...{onChange, value, ref}} key={index} />
+					const {changeContent} = this
+					return <ListItem {...{index, ref, value, changeContent}} key={index} />
 				})}
 
 				<button {...{disabled}} onClick={this.newField}>New</button>
