@@ -54,9 +54,10 @@ class ListItem extends Component {
 export default class List extends Component {
 
 	changeContent = (index, evt) => {
-		let {content, onContentChange} = this.props
-		content[index] = evt.target.value
-		onContentChange(content)
+		const {content, onContentChange} = this.props
+		const contentCopy = content.slice()
+		contentCopy[index] = evt.target.value
+		onContentChange(contentCopy)
 	}
 
 	componentDidUpdate = ({content: oldContent}) => {
