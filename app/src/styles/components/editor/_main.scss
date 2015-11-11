@@ -42,5 +42,17 @@
 				visibility: hidden;
 			}
 		}
+
+		&--list {
+
+			&__item {
+				display: flex;
+				margin-bottom: .5rem;
+
+				&__input {
+					margin: 0!important;
+				}
+			}
+		}
 	}
 }

@@ -38,9 +38,16 @@ class ListItem extends Component {
 	}
 
 	render() {
-		const {index, changeContent, value} = this.props
+		const {index, changeContent, deleteItem, value} = this.props
 		const onChange = changeContent.bind(null, index)
-		return <input type="text" ref="input" {...{onChange, value}} />
+		const handleDelete = deleteItem.bind(null, index)
+
+		return (
+			<div className="editor__field--list__item">
+				<input className="editor__field--list__item__input" type="text" ref="input" {...{onChange, value}} />
+				<button onClick={handleDelete}>x</button>
+			</div>
+		)
 	}
 }
 
@@ -71,6 +78,13 @@ export default class List extends Component {
 		])
 	}
 
+	deleteItem = (index) => {
+		let {content, onContentChange} = this.props
+		const contentCopy = content.slice()
+		contentCopy.splice(index, 1)
+		onContentChange(contentCopy)
+	}
+
 	render() {
 		const {content, meta} = this.props
 		const disabled = this.newItemDisabled()
@@ -79,8 +93,8 @@ export default class List extends Component {
 			<div>
 				{content.map((value, index) => {
 					const ref = content.length-1 === index ? 'last' : null
-					const {changeContent} = this
-					return <ListItem {...{index, ref, value, changeContent}} key={index} />
+					const {changeContent, deleteItem} = this
+					return <ListItem {...{index, ref, value, changeContent, deleteItem}} key={index} />
 				})}
 
 				<button {...{disabled}} onClick={this.newItem}>New</button>
