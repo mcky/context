@@ -1,34 +1,7 @@
 import omit from 'lodash/object/omit'
 import assign from 'lodash/object/assign'
 import mapValues from 'lodash/object/mapValues'
-
-const initialState = {
-	fields: ['one', 'two', 'four', 'three'],
-	fieldsById: {
-		'one': {
-			id: 'one',
-			type: 'text',
-			content: 'sample text',
-		},
-		'two': {
-			id: 'two',
-			type: 'list',
-			content: ['one', 'two'],
-			meta: {
-				'variation': 'ol',
-			},
-		},
-		'three': {
-			id: 'three',
-			type: 'separator',
-		},
-		'four': {
-			id: 'four',
-			type: 'text',
-			content: 'last text',
-		},
-	},
-}
+import initialState from '_constants/SampleFields'
 
 const generateId = () => Math.random().toString(36).substr(2, 5)
 
